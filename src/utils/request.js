@@ -30,16 +30,17 @@ function errorState (error) {
   switch (error.response.status) {
     case 400:
       for (const key in error.response.data.error) {
+        message = error.response.data.error[key].message || '参数错误'
         Message({
           type: 'error',
           offset: 40 * offset,
-          message: error.response.data.error[key].message
+          message
         })
         offset++
       }
-      message = '参数错误'
       break
     case 401:
+      message = 'token失效'
       MessageBox.confirm(
         '登录状态已过期，您可以继续留在该页面，或者重新登录',
         '系统提示',
@@ -53,21 +54,20 @@ function errorState (error) {
           location.reload() // 为了重新实例化vue-router对象 避免bug
         })
       })
-      message = 'token失效'
       break
     case 403:
+      message = '拒绝访问'
       Message({
         type: 'error',
-        message: '拒绝访问'
+        message
       })
-      message = '拒绝访问'
       break
     case 500:
+      message = error.response.data.message || '服务器异常'
       Message({
         type: 'error',
-        message: error.response.data.message
+        message
       })
-      message = '服务器异常'
       break
     default:
       Message({

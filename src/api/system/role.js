@@ -10,7 +10,6 @@ export function getRoleById (id) {
   return HttpRequest('/system/role/' + id, 'get', {}, false)
 }
 
-
 // 添加角色
 export function addRole (params = {}) {
   return HttpRequest('/system/role', 'post', params)

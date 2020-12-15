@@ -40,7 +40,7 @@ export function handleTree (data, id = 'id', parentId = 'parentId', children = '
 
 // 回显数据字典
 export function selectDictLabel (datas, value) {
-  let actions = []
+  const actions = []
   Object.keys(datas).map((key) => {
     if (datas[key].dictValue === ('' + value)) {
       actions.push(datas[key].dictLabel)

@@ -460,8 +460,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async function () {
-        let { data } = await getUser(row.id)
-        let query = data
+        const { data } = await getUser(row.id)
+        const query = data
         query.roleIds = data.roles.map(item => item.id)
         query.status = row.status
         return updateUser(query)

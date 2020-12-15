@@ -139,13 +139,13 @@ export default {
       this.$refs.cropper.getCropBlob(data => {
         const formData = new FormData()
         console.log(data)
-        let fileName = this.fileName
+        const fileName = this.fileName
         //
         const file = new window.File(
           [data],
           fileName,
           { type: data.type }
-        );
+        )
         formData.append('file', file)
         uploadAvatar(formData).then(res => {
           this.open = false
