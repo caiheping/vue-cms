@@ -11,7 +11,7 @@
         />
       </el-form-item>
       <el-form-item label="类型" prop="noticeType">
-        <el-select v-model="queryParams.noticeType" placeholder="公告类型" clearable size="small">
+        <el-select v-model="queryParams.noticeType" placeholder="公告类型" clearable size="small" @change="handleQuery">
           <el-option
             v-for="dict in typeOptions"
             :key="dict.dictValue"

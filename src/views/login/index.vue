@@ -44,10 +44,6 @@
         </el-button>
       </el-form-item>
     </el-form>
-    <!--  底部  -->
-    <div class="el-login-footer">
-      <span>广州云积软件技术有限公司 粤ICP备I3089840号</span>
-    </div>
   </div>
 </template>
 
@@ -143,7 +139,7 @@ export default {
     background-size: cover;
     box-sizing: border-box;
     justify-content: flex-end;
-    background-image: url("../../static/images/login-background.png");
+    background-image: url("../../static/images/login-bg.jpg");
   }
   .title {
     margin: 0px auto 30px auto;

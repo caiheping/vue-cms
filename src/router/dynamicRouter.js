@@ -9,5 +9,10 @@ export default {
   Menu: () => import('@/views/system/menu'),
   Dict: () => import('@/views/system/dict'),
   Dept: () => import('@/views/system/dept'),
+
+  // 文章模块
+  ArticleList: () => import('@/views/articleModel/articleList'),
+
+  // 测试
   Test: () => import('@/views/login')
 }

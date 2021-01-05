@@ -20,6 +20,11 @@ export function updateRole (params = {}) {
   return HttpRequest('/system/role/' + params.id, 'put', params)
 }
 
+// 修改角色状态
+export function updateRoleStatus (params = {}) {
+  return HttpRequest('/system/role/changeRoleStatus', 'put', params)
+}
+
 // 删除角色
 export function delRole (ids) {
   return HttpRequest('/system/role/' + ids, 'delete')

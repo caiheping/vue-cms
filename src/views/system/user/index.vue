@@ -91,14 +91,6 @@
               v-has-permi="['system:user:delete']"
             >删除</el-button>
           </el-col>
-          <!--          <el-col :span="1.5">-->
-          <!--            <el-button-->
-          <!--              type="info"-->
-          <!--              icon="el-icon-upload2"-->
-          <!--              size="mini"-->
-          <!--              @click="handleImport"-->
-          <!--            >导入</el-button>-->
-          <!--          </el-col>-->
           <el-col :span="1.5">
             <el-button
               type="warning"
@@ -187,12 +179,12 @@
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item v-if="form.id == undefined" label="用户名" prop="userName">
+            <el-form-item v-if="form.id === undefined" label="用户名" prop="userName">
               <el-input v-model="form.userName" placeholder="请输入用户名" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item v-if="form.id == undefined" label="用户密码" prop="password">
+            <el-form-item v-if="form.id === undefined" label="用户密码" prop="password">
               <el-input v-model="form.password" placeholder="请输入用户密码" type="password" />
             </el-form-item>
           </el-col>

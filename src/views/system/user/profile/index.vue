@@ -82,6 +82,7 @@ import userInfo from './userInfo'
 import resetPwd from './resetPwd'
 import { getUser } from '@/api/system/user'
 import { getDept } from '@/api/system/dept'
+import dayjs from 'dayjs'
 
 export default {
   name: 'Profile',
@@ -98,6 +99,9 @@ export default {
     this.getUser()
   },
   methods: {
+    dateFormatter (date) {
+      return dayjs(date).format('YYYY-MM-DD HH:mm:ss')
+    },
     /** 查询部门下拉树结构 */
     getTreeselect () {
       getDept().then(res => {
