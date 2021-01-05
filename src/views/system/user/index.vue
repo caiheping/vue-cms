@@ -111,8 +111,8 @@
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                active-value="0"
-                inactive-value="1"
+                active-value="1"
+                inactive-value="0"
                 @change="handleStatusChange(scope.row)"
               />
             </template>
@@ -256,7 +256,7 @@
     </el-dialog>
 
     <!-- 用户导入对话框 -->
-    <el-dialog :title="upload.title" :visible.sync="upload.open" width="400px" append-to-body @close="closeUploadDialog">
+    <el-dialog :title="upload.title" :visible.sync="upload.open" width="400px" append-to-body @close="closeUploadDialog" :close-on-click-modal="false">
       <el-radio v-model="uploadType" label="1">工作人员</el-radio>
       <el-radio v-model="uploadType" label="2">学生</el-radio>
       <el-upload
@@ -446,7 +446,7 @@ export default {
     },
     // 用户状态修改
     handleStatusChange (row) {
-      const text = row.status === '0' ? '启用' : '停用'
+      const text = row.status === '1' ? '启用' : '停用'
       this.$confirm('确认要"' + text + '""' + row.userName + '"用户吗?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -479,7 +479,7 @@ export default {
         mobile: undefined,
         email: undefined,
         sex: undefined,
-        status: '0',
+        status: '1',
         remark: undefined,
         roleIds: []
       }

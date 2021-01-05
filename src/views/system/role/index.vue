@@ -75,8 +75,8 @@
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"
-            active-value="0"
-            inactive-value="1"
+            active-value="1"
+            inactive-value="0"
             @change="handleStatusChange(scope.row)"
           />
         </template>
@@ -119,7 +119,7 @@
     />
 
     <!-- 添加或修改角色配置对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
+    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body :close-on-click-modal="false">
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="角色名称" prop="roleName">
           <el-input v-model="form.roleName" placeholder="请输入角色名称" />
@@ -160,7 +160,7 @@
     </el-dialog>
 
     <!-- 分配角色数据权限对话框 -->
-    <el-dialog :title="title" :visible.sync="openDataScope" width="500px" append-to-body>
+    <el-dialog :title="title" :visible.sync="openDataScope" width="500px" append-to-body :close-on-click-modal="false">
       <el-form :model="form" label-width="80px">
         <el-form-item label="角色名称">
           <el-input v-model="form.roleName" :disabled="true" />
@@ -292,7 +292,7 @@ export default {
     },
     // 角色状态修改
     handleStatusChange (row) {
-      const text = row.status === '0' ? '启用' : '停用'
+      const text = row.status === '1' ? '启用' : '停用'
       this.$confirm('确认要"' + text + '""' + row.roleName + '"角色吗?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -302,7 +302,7 @@ export default {
       }).then(() => {
         this.$httpResponse(text + '成功')
       }).catch(function () {
-        row.status = row.status === '0' ? '1' : '0'
+        row.status = row.status === '1' ? '1' : '0'
       })
     },
     // 取消按钮

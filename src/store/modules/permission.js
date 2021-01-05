@@ -57,7 +57,7 @@ function filterAsyncRouter (asyncRouterMap) {
       path: list.path,
       name: list.name,
       component: list.component,
-      hidden: list.visible !== '0',
+      hidden: list.visible !== '1',
       children: list.children,
       meta: {
         title: list.title,
@@ -74,7 +74,7 @@ function filterAsyncRouter (asyncRouterMap) {
           path: '/layout',
           name: list.name,
           component: dynamicRouter.Layout,
-          hidden: list.visible !== '0',
+          hidden: list.visible !== '1',
           children: [obj],
           meta: {
             title: list.title,
