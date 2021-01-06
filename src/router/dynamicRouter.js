@@ -11,7 +11,8 @@ export default {
   Dept: () => import('@/views/system/dept'),
 
   // 文章模块
-  ArticleList: () => import('@/views/articleModel/articleList'),
+  ArticleList: () => import('@/views/blogModel/articleList'),
+  ArticleType: () => import('@/views/blogModel/articleType'),
 
   // 测试
   Test: () => import('@/views/login')

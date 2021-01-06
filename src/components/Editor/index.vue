@@ -18,6 +18,7 @@
       ref="quillEditor"
       v-model="content"
       class="editor"
+      :style="'height:' + height"
       :options="editorOption"
       @blur="onEditorBlur($event)"
       @focus="onEditorFocus($event)"
@@ -60,6 +61,10 @@ export default {
     maxSize: {
       type: Number,
       default: 4000 // kb
+    },
+    height: {
+      type: String,
+      default: '192px'
     }
   },
   data () {

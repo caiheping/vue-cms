@@ -278,8 +278,8 @@ export default {
         menuType: 'M',
         orderNum: undefined,
         isFrame: '1',
-        visible: '0',
-        status: '0'
+        visible: '1',
+        status: '1'
       }
       this.resetForm('form')
     },
