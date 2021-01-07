@@ -172,7 +172,7 @@ export default {
         parentId: undefined,
         deptName: undefined,
         orderNum: undefined,
-        status: '0'
+        status: '1'
       }
       this.resetForm('form')
     },

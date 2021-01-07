@@ -247,7 +247,7 @@ export default {
         dictLabel: undefined,
         dictValue: undefined,
         dictSort: 0,
-        status: '0',
+        status: '1',
         remark: undefined
       }
       this.resetForm('form')

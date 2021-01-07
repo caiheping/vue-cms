@@ -140,7 +140,6 @@ export default {
         const formData = new FormData()
         console.log(data)
         const fileName = this.fileName
-        //
         const file = new window.File(
           [data],
           fileName,
@@ -149,6 +148,10 @@ export default {
         formData.append('file', file)
         uploadAvatar(formData).then(res => {
           this.open = false
+          if (!res.data) {
+            this.$httpResponse(res.message, 'error')
+            return
+          }
           this.options.img = res.data.path
           const query = {
             avatar: this.options.img
@@ -158,6 +161,9 @@ export default {
             this.visible = false
             window.location.reload()
           })
+        }).catch(err => {
+          this.$httpResponse('上传失败', 'error')
+          console.log(err)
         })
       })
     },

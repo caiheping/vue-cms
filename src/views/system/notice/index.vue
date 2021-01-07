@@ -144,14 +144,13 @@
             </el-form-item>
           </el-col>
           <el-col :span="24">
-            <el-form-item label="内容">
+            <el-form-item label="内容" prop="noticeContent">
               <el-input
                 type="textarea"
                 :rows="2"
                 placeholder="请输入内容"
                 v-model="form.noticeContent">
               </el-input>
-<!--              <Editor v-model="form.noticeContent" />-->
             </el-form-item>
           </el-col>
         </el-row>
@@ -166,13 +165,9 @@
 
 <script>
 import { listNotice, getNotice, delNotice, addNotice, updateNotice } from '@/api/system/notice'
-import Editor from '@/components/Editor'
 
 export default {
   name: 'Notice',
-  components: {
-    Editor
-  },
   data () {
     return {
       // 选中数组
@@ -209,6 +204,9 @@ export default {
         ],
         noticeType: [
           { required: true, message: '公告类型不能为空', trigger: 'blur' }
+        ],
+        noticeContent: [
+          { required: true, message: '公告内容不能为空', trigger: 'blur' }
         ]
       }
     }
