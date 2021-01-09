@@ -57,9 +57,9 @@
       </el-col>
     </el-row>
 
-    <div>
-      博客模仿地址： https://www.zfsphp.com/
-    </div>
+<!--    <div>-->
+<!--      博客模仿地址： https://www.zfsphp.com/-->
+<!--    </div>-->
     <el-table v-loading="$store.state.app.loading" :data="dataList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column

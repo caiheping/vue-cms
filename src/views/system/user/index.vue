@@ -110,6 +110,7 @@
           <el-table-column label="状态" align="center">
             <template slot-scope="scope">
               <el-switch
+                :disabled="scope.row.id === 1"
                 v-model="scope.row.status"
                 active-value="1"
                 inactive-value="0"
