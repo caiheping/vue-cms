@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <h3 class="title">小菜后台管理系统</h3>
+    <h3 class="title">后台管理系统</h3>
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
