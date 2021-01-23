@@ -1,5 +1,5 @@
 import { constantRoutes } from '@/router'
-import { getRouters } from '@/api/system/menu'
+import { getRouters } from '@/api/admin/system/menu'
 import dynamicRouter from '@/router/dynamicRouter'
 
 const permission = {

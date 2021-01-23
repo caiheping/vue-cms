@@ -1,19 +1,20 @@
 export default {
-  Layout: () => import('@/views/layout'),
-  Home: () => import('@/views/home'),
+  Layout: () => import('@/views/admin/layout'),
+  Home: () => import('@/views/admin/home'),
 
   // 系统管理
-  User: () => import('@/views/system/user'),
-  Role: () => import('@/views/system/role'),
-  Notice: () => import('@/views/system/notice'),
-  Menu: () => import('@/views/system/menu'),
-  Dict: () => import('@/views/system/dict'),
-  Dept: () => import('@/views/system/dept'),
+  User: () => import('@/views/admin/system/user'),
+  Role: () => import('@/views/admin/system/role'),
+  Notice: () => import('@/views/admin/system/notice'),
+  Menu: () => import('@/views/admin/system/menu'),
+  Dict: () => import('@/views/admin/system/dict'),
+  Dept: () => import('@/views/admin/system/dept'),
 
   // 文章模块
-  ArticleList: () => import('@/views/blogModel/articleList'),
-  ArticleType: () => import('@/views/blogModel/articleType'),
+  ArticleList: () => import('@/views/admin/blogModel/articleList'),
+  ArticleType: () => import('@/views/admin/blogModel/articleType'),
+  FriendlyLink: () => import('@/views/admin/blogModel/friendlyLink'),
 
   // 测试
-  Test: () => import('@/views/login')
+  Test: () => import('@/views/admin/login')
 }

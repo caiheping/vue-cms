@@ -1,11 +1,12 @@
-import { login, logout } from '@/api/login'
-import { getInfo } from '@/api/system/user'
+import { login, logout } from '@/api/admin/login'
+import { getInfo } from '@/api/admin/system/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { Message } from 'element-ui'
 
 const user = {
   state: {
     token: getToken(),
+    frontUserInfo: null,
     userInfo: null
   },
 
