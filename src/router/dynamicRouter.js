@@ -15,6 +15,4 @@ export default {
   ArticleType: () => import('@/views/admin/blogModel/articleType'),
   FriendlyLink: () => import('@/views/admin/blogModel/friendlyLink'),
 
-  // 测试
-  Test: () => import('@/views/admin/login')
 }

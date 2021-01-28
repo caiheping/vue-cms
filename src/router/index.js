@@ -86,24 +86,6 @@ export const constantRoutes = [
     name: 'Front',
     component: () => import('@/views/front/layout'),
     children: [
-      // {
-      //   path: 'home/:u_id',
-      //   name: 'Home',
-      //   component: () => import('@/views/front/home'),
-      //   meta: {
-      //     title: '首页',
-      //     keepAlive: true
-      //   }
-      // },
-      {
-        path: 'lifeNotes/:u_id',
-        name: 'LifeNotes',
-        component: () => import('@/views/front/lifeNotes'),
-        meta: {
-          title: '生活笔记',
-          keepAlive: true
-        }
-      },
       {
         path: 'technique/:u_id/:type',
         name: 'Technique',
@@ -111,15 +93,6 @@ export const constantRoutes = [
         meta: {
           title: '技术杂谈',
           keepAlive: false
-        }
-      },
-      {
-        path: 'my/:u_id',
-        name: 'My',
-        component: () => import('@/views/front/my'),
-        meta: {
-          title: '关于自己',
-          keepAlive: true
         }
       },
       {

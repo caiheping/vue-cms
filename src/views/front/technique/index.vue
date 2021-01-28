@@ -24,6 +24,8 @@
         </li>
       </ul>
       <pagination
+        class="pagination"
+        :warp-background="'transparent'"
         v-show="total>0"
         :total="total"
         :page.sync="queryParams.pageNum"
@@ -36,7 +38,7 @@
         <el-input v-model="queryParams.title" placeholder="请输入标题"></el-input>
         <el-button class="btn" @click="getList">查询</el-button>
       </div>
-      <div class="fav">
+      <div class="links">
         <h4>友情链接</h4>
         <ul>
           <li v-for="item in links" :key="item.id">
@@ -125,8 +127,9 @@ export default {
 
 <style scoped lang="scss">
   .technique{
+    color: #333;
     display: flex;
-    background: #fff;
+    background: rgba(255, 255, 255, .5);
     min-height: calc(100vh - 260px);
     box-sizing: border-box;
     .left{
@@ -136,7 +139,7 @@ export default {
       .article{
         li{
           overflow: hidden;
-          border: 1px solid #EBEEF5;
+          border: 1px solid #bfbfbf;
           color: #303133;
           transition: .3s;
           margin-bottom: 20px;
@@ -144,12 +147,12 @@ export default {
             margin-bottom: 0;
           }
           &:hover{
-            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,.2);
+            border: 1px solid transparent;
           }
           .item{
             cursor: pointer;
             overflow: hidden;
-            background-color: #fff;
             padding: 20px 15px 40px 20px;
             position: relative;
             clear: both;
@@ -195,6 +198,11 @@ export default {
           }
         }
       }
+      .pagination{
+        /deep/ input, /deep/ button{
+          background: rgba(255, 255, 255, .5);
+        }
+      }
     }
     .right{
       width: 320px;
@@ -203,17 +211,21 @@ export default {
         margin-bottom: 10px;
       }
       .search{
-        background-color: #fff;
         box-sizing: border-box;
         margin-bottom: 10px;
         display: flex;
+        /deep/ .el-input__inner{
+          background: rgba(255,255,255,.5);
+        }
+        /deep/ .el-button{
+          background: rgba(255,255,255,.5);
+        }
         .btn{
           margin-left: 10px;
         }
       }
-      .fav{
+      .links{
         margin-bottom: 10px;
-        background-color: #fff;
         h4{
           font-weight: normal;
           height: 45px;
@@ -227,6 +239,7 @@ export default {
             width: 50%;
             margin-bottom: 10px;
             a{
+              color: #333;
               display: block;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -236,7 +249,7 @@ export default {
               line-height: 40px;
               width: 80%;
               margin: 0 auto;
-              border-bottom: 1px solid #f0f0f0;
+              border-bottom: 1px solid #bebebe;
               &:hover{
                 color: teal;
                 border-bottom: 1px solid teal;

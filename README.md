@@ -7,9 +7,7 @@ vue 项目的后台模版
 
 前端技术栈：vue全家桶 + axios + elementUI 等
 
-后端项目地址（码云）：https://gitee.com/caiheping/egg-cms
-
-后端项目地址（GitHub）：https://github.com/caiheping/egg-cms
+后端项目地址：https://github.com/caiheping/egg-cms
 
 ## 项目运行
 

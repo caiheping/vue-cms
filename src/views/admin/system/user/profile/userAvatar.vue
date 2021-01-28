@@ -138,7 +138,6 @@ export default {
     uploadImg () {
       this.$refs.cropper.getCropBlob(data => {
         const formData = new FormData()
-        console.log(data)
         const fileName = this.fileName
         const file = new window.File(
           [data],

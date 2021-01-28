@@ -1,11 +1,16 @@
 const path = require('path')
 
+// 导入compression-webpack-plugin 开启gzip
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+// 定义压缩文件类型
+const productionGzipExtensions = ['js', 'css']
+
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/web' : '/',
   lintOnSave: true,
   // 打包时不生成.map文件
   productionSourceMap: false,
@@ -28,6 +33,16 @@ module.exports = {
         '@': resolve('src')
       }
     },
+    plugins: [
+      new CompressionWebpackPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'), // 匹配文件名
+        threshold: 10240, // 对10K以上的数据进行压缩
+        minRatio: 0.8,
+        deleteOriginalAssets: false // 是否删除源文件
+      })
+    ],
     performance: {
       hints: false
     },

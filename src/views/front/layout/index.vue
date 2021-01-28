@@ -23,8 +23,8 @@
     <div class="header">
       <p>
         <span>
-          <b>慢节奏</b>
-          {{$store.state.user.frontUserInfo ? $store.state.user.frontUserInfo.nickName: ''}}的个人博客
+          <b>{{$store.state.user.frontUserInfo ? $store.state.user.frontUserInfo.nickName: ''}}</b>
+          的个人博客
         </span>
       </p>
       <div class="menu">
@@ -36,14 +36,11 @@
             background-color="#304156"
             text-color="#fff"
             active-text-color="teal">
-<!--            <el-menu-item :index="`/front/home/${$route.params.u_id}`">首页</el-menu-item>-->
             <el-submenu index="2">
               <template slot="title">我的文章</template>
               <el-menu-item :index="`/front/technique/${$route.params.u_id}/all`">全部</el-menu-item>
               <el-menu-item :index="`/front/technique/${$route.params.u_id}/${item.key}`" v-for="item in typeLists" :key="item.id">{{item.title}}</el-menu-item>
             </el-submenu>
-<!--            <el-menu-item :index="`/front/lifeNotes/${$route.params.u_id}`">生活笔记</el-menu-item>-->
-            <el-menu-item :index="`/front/my/${$route.params.u_id}`">关于自己</el-menu-item>
           </el-menu>
         </div>
       </div>
@@ -55,7 +52,7 @@
       <router-view v-if="!$route.meta.keepAlive"></router-view>
     </div>
     <div class="bottom">
-      <p>慢节奏 版权所有者：caiheping（小菜）</p>
+      <p>版权所有者：caiheping（小菜）</p>
     </div>
   </div>
 </template>

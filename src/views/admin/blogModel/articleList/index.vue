@@ -140,7 +140,12 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="内容">
-              <mavon-editor :toolbars="markdownOption" style="height: 600px;" v-model="form.content"/>
+              <mavon-editor
+                :toolbars="markdownOption"
+                style="height: 600px;"
+                v-model="form.content" ref="md"
+                @imgAdd="handleEditorImgAdd"
+                @imgDel="handleEditorImgDel" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -156,6 +161,8 @@
 <script>
 import { getArticle, getArticleById, addArticle, updateArticle, delArticle } from '@/api/admin/blog/article'
 import { getAllType } from '@/api/admin/blog/articleType'
+import { uploadAvatar } from '@/api/admin/base'
+import { baseImgUrl } from '@/utils/config'
 
 export default {
   data () {
@@ -182,6 +189,7 @@ export default {
         title: undefined,
         type: undefined
       },
+      imgFile: [],
       markdownOption: {
         bold: true, // 粗体
         italic: true, // 斜体
@@ -239,13 +247,29 @@ export default {
   methods: {
     typeFormatter (row, column) {
       let str = ''
-      console.log(this.typeList)
       this.typeList.forEach(item => {
         if (item.key === row.type) {
           str = item.title
         }
       })
       return str
+    },
+    handleEditorImgAdd (pos, file) {
+      this.imgFile[pos] = file
+      const formData = new FormData()
+      formData.append('file', file)
+      uploadAvatar(formData).then(res => {
+        this.$httpResponse(res.message)
+        console.log(baseImgUrl + res.data.path)
+        if (res.code === 0) {
+          this.$refs.md.$imglst2Url([[pos, baseImgUrl + res.data.path]])
+        } else {
+          this.$httpResponse({type: 'error', message: '上传失败'});
+        }
+      })
+    },
+    handleEditorImgDel (pos) {
+      delete this.imgFile[pos]
     },
     init () {
       this.getType()
@@ -256,7 +280,7 @@ export default {
         this.typeList = res.data.rows
       })
     },
-    /** 查询公告列表 */
+    /** 查询列表 */
     getList () {
       getArticle(this.queryParams).then(res => {
         this.dataList = res.data.rows
@@ -299,7 +323,7 @@ export default {
     handleAdd () {
       this.reset()
       this.open = true
-      this.title = '添加公告'
+      this.title = '添加文章'
     },
     /** 修改按钮操作 */
     handleUpdate (row) {
@@ -308,7 +332,7 @@ export default {
       getArticleById(id).then(res => {
         this.form = res.data
         this.open = true
-        this.title = '修改公告'
+        this.title = '修改文章'
       })
     },
     /** 提交按钮 */
@@ -335,7 +359,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete (row) {
       const ids = row.id || this.ids
-      this.$confirm('是否确认删除公告编号为"' + ids + '"的数据项?', '警告', {
+      this.$confirm('是否确认删除数据项?', '警告', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'

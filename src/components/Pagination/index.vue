@@ -1,5 +1,7 @@
 <template>
-  <div :class="{'hidden':hidden}" class="pagination-container">
+  <div :class="{'hidden':hidden}" class="pagination-container" :style="{
+    background: warpBackground
+  }">
     <el-pagination
       :background="background"
       :current-page.sync="currentPage"
@@ -53,6 +55,10 @@ export default {
     hidden: {
       type: Boolean,
       default: false
+    },
+    warpBackground: {
+      type: String,
+      default: '#fff'
     }
   },
   computed: {
