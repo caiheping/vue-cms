@@ -73,14 +73,14 @@ export default {
   },
   methods: {
     getTypes () {
-      getAllType({ userId: this.$route.params.u_id }).then(res => {
+      getAllType({ userId: window.atob(this.$route.params.u_id) }).then(res => {
         if (res.data?.rows) {
           this.typeLists = res.data.rows
         }
       })
     },
     getUserInfo () {
-      getInfo({ userId: this.$route.params.u_id }).then(res => {
+      getInfo({ userId: window.atob(this.$route.params.u_id) }).then(res => {
         sessionStorage.setItem('userInfo', JSON.stringify(res.data))
         this.$store.state.user.frontUserInfo = res.data
       })

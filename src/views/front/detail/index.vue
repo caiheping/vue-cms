@@ -35,10 +35,6 @@ export default {
   },
   methods: {
     init () {
-      // getIp().then(res => {
-      //   this.ip = res.cip
-      //   setBrowse({ a_id: this.$route.query.id, ip: this.ip })
-      // })
       this.getDetail()
     },
     getDetail () {

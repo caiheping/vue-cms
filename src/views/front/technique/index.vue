@@ -1,7 +1,7 @@
 <template>
   <div class="technique">
     <div class="left">
-      <ul class="article" v-loading="$store.state.app.loading">
+      <ul class="article" v-if="articleLists.length" v-loading="$store.state.app.loading">
         <li v-for="item in articleLists" :key="item.id">
           <div class="item" @click.prevent="toDetail(item.id)">
             <header>
@@ -23,6 +23,7 @@
           </div>
         </li>
       </ul>
+      <div v-else class="noData">暂无数据...</div>
       <pagination
         class="pagination"
         :warp-background="'transparent'"
@@ -66,7 +67,7 @@ export default {
       // 总条数
       total: 0,
       queryParams: {
-        userId: this.$route.params.u_id,
+        userId: '',
         type: 'all',
         pageNum: 1,
         pageSize: 10,
@@ -83,6 +84,7 @@ export default {
   },
   methods: {
     init () {
+      this.queryParams.userId = window.atob(this.$route.params.u_id)
       this.getList()
     },
     /** 搜索按钮操作 */
@@ -92,7 +94,7 @@ export default {
     },
     handleGetAllLink () {
       getAllLink({
-        userId: this.$route.params.u_id
+        userId: window.atob(this.$route.params.u_id)
       }).then(res => {
         console.log(res)
         this.links = res.data.rows
@@ -136,6 +138,12 @@ export default {
       flex: 1;
       box-sizing: border-box;
       padding: 20px;
+      .noData{
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #999;
+      }
       .article{
         li{
           overflow: hidden;

@@ -90,7 +90,7 @@
           <el-input v-model="form.title" placeholder="请输入名称" />
         </el-form-item>
         <el-form-item label="链接" prop="url">
-          <el-input v-model="form.url" placeholder="请输入键值" />
+          <el-input v-model="form.url" placeholder="请输入链接" />
         </el-form-item>
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
@@ -144,7 +144,7 @@ export default {
           { required: true, message: '名称不能为空', trigger: 'blur' }
         ],
         url: [
-          { required: true, message: '键值不能为空', trigger: 'blur' }
+          { required: true, message: '链接不能为空', trigger: 'blur' }
         ]
       }
     }
@@ -189,7 +189,7 @@ export default {
     handleAdd () {
       this.reset()
       this.open = true
-      this.title = '添加文章类型'
+      this.title = '添加友情链接'
     },
     // 多选框选中数据
     handleSelectionChange (selection) {
@@ -204,7 +204,7 @@ export default {
       getFriendlyLinkById(id).then(res => {
         this.form = res.data
         this.open = true
-        this.title = '修改文章类型'
+        this.title = '修改友情链接'
       })
     },
     /** 提交按钮 */

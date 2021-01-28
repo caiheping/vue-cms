@@ -1,6 +1,6 @@
 <template>
   <div class="app-container home">
-    <a class="toBlog" :href="`${host}/web/index.html#/front/technique/${$store.state.user.userInfo.user.id}/all`" target="_blank">我的博客</a>
+    <a class="toBlog" :href="`${origin}/web/index.html#/front/technique/${id}/all`" target="_blank">我的博客</a>
   </div>
 </template>
 
@@ -9,11 +9,13 @@ export default {
   data () {
     return {
       value: true,
-      host: ''
+      origin: '',
+      id: ''
     }
   },
   mounted () {
-    this.host = window.location.host
+    this.origin = window.location.origin
+    this.id = window.btoa(this.$store.state.user.userInfo.user.id)
   }
 }
 </script>
