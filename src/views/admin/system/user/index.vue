@@ -91,14 +91,14 @@
               v-has-permi="['system:user:delete']"
             >删除</el-button>
           </el-col>
-          <el-col :span="1.5">
-            <el-button
-              type="warning"
-              icon="el-icon-download"
-              size="mini"
-              @click="handleExport"
-            >导出</el-button>
-          </el-col>
+<!--          <el-col :span="1.5">-->
+<!--            <el-button-->
+<!--              type="warning"-->
+<!--              icon="el-icon-download"-->
+<!--              size="mini"-->
+<!--              @click="handleExport"-->
+<!--            >导出</el-button>-->
+<!--          </el-col>-->
         </el-row>
 
         <el-table v-loading="$store.state.app.loading" :data="userList" @selection-change="handleSelectionChange">
@@ -110,7 +110,7 @@
           <el-table-column label="状态" align="center">
             <template slot-scope="scope">
               <el-switch
-                :disabled="scope.row.id === 1"
+                :disabled="scope.row.id === 1 || checkStatus('system:user:showStatus')"
                 v-model="scope.row.status"
                 active-value="1"
                 inactive-value="0"
@@ -405,6 +405,16 @@ export default {
     })
   },
   methods: {
+    checkStatus (val) {
+      if (this.$store.state.user.userInfo.permissions.includes('*:*:*')) {
+        return false
+      }
+      if (this.$store.state.user.userInfo.permissions.includes(val)) {
+        return false
+      } else {
+        return true
+      }
+    },
     normalizer (node) {
       return {
         id: node.deptId,

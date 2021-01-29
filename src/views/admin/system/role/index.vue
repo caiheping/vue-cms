@@ -74,6 +74,7 @@
       <el-table-column label="状态" align="center" width="100">
         <template slot-scope="scope">
           <el-switch
+            :disabled="scope.row.id === 1 || checkStatus('system:user:showStatus')"
             v-model="scope.row.status"
             active-value="1"
             inactive-value="0"
@@ -267,6 +268,16 @@ export default {
     })
   },
   methods: {
+    checkStatus (val) {
+      if (this.$store.state.user.userInfo.permissions.includes('*:*:*')) {
+        return false
+      }
+      if (this.$store.state.user.userInfo.permissions.includes(val)) {
+        return false
+      } else {
+        return true
+      }
+    },
     /** 查询角色列表 */
     getList () {
       getRole(this.queryParams).then(res => {

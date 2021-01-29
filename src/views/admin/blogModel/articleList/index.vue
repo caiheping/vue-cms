@@ -264,7 +264,7 @@ export default {
         if (res.code === 0) {
           this.$refs.md.$imglst2Url([[pos, baseImgUrl + res.data.path]])
         } else {
-          this.$httpResponse({type: 'error', message: '上传失败'});
+          this.$httpResponse({ type: 'error', message: '上传失败' })
         }
       })
     },
