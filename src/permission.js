@@ -26,22 +26,18 @@ router.beforeEach((to, from, next) => {
           store.dispatch('GetInfo').then(res => {
             store.dispatch('GenerateRoutes').then(accessRoutes => {
               router.addRoutes(accessRoutes) // 动态添加可访问路由表
-              console.log(to)
-              next({
-                ...to,
-                replace: true
-              })
-              // if (includeName(setName(getName(to.path)))) {
-              //
-              // } else {
-              //   next({
-              //     name: accessRoutes[0].children[0].name,
-              //     query: to.query,
-              //     replace: true
-              //   })
-              // }
-              // console.log(to)
-              // next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+              if (accessRoutes.length) { // 默认返回第一个
+                next({
+                  name: accessRoutes[0].children[0].name,
+                  query: to.query,
+                  replace: true
+                })
+              } else {
+                next({
+                  path: '/404',
+                  replace: true
+                })
+              }
             })
           }).catch(err => {
             store.dispatch('FedLogOut').then(() => {
