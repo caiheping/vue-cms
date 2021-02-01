@@ -143,7 +143,9 @@
               <mavon-editor
                 :toolbars="markdownOption"
                 style="height: 600px;"
-                v-model="form.content" ref="md"
+                v-model="form.content"
+                ref="md"
+                :imageFilter = "uploadBefore"
                 @imgAdd="handleEditorImgAdd"
                 @imgDel="handleEditorImgDel" />
             </el-form-item>
@@ -254,6 +256,14 @@ export default {
       })
       return str
     },
+    uploadBefore(f){
+      if(f.size > (1024 * 1024 * 0.5)){
+        this.$httpResponse('图片不能大于500K' , 'warning')
+        return false
+      }else {
+        return true
+      }
+    },
     handleEditorImgAdd (pos, file) {
       this.imgFile[pos] = file
       const formData = new FormData()
@@ -264,7 +274,7 @@ export default {
         if (res.code === 0) {
           this.$refs.md.$imglst2Url([[pos, baseImgUrl + res.data.path]])
         } else {
-          this.$httpResponse({ type: 'error', message: '上传失败' })
+          this.$httpResponse('上传失败' , 'error')
         }
       })
     },
