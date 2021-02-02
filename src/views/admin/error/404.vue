@@ -26,14 +26,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'Page404',
-    computed: {
-      message () {
-        return '找不到网页！'
-      }
+export default {
+  name: 'Page404',
+  computed: {
+    message () {
+      return '找不到网页！'
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

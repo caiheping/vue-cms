@@ -256,11 +256,11 @@ export default {
       })
       return str
     },
-    uploadBefore(f){
-      if(f.size > (1024 * 1024 * 0.5)){
-        this.$httpResponse('图片不能大于500K' , 'warning')
+    uploadBefore (f) {
+      if (f.size > (1024 * 1024 * 0.5)) {
+        this.$httpResponse('图片不能大于500K', 'warning')
         return false
-      }else {
+      } else {
         return true
       }
     },
@@ -274,7 +274,7 @@ export default {
         if (res.code === 0) {
           this.$refs.md.$imglst2Url([[pos, baseImgUrl + res.data.path]])
         } else {
-          this.$httpResponse('上传失败' , 'error')
+          this.$httpResponse('上传失败', 'error')
         }
       })
     },

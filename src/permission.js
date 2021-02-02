@@ -27,9 +27,13 @@ router.beforeEach((to, from, next) => {
             store.dispatch('GenerateRoutes').then(accessRoutes => {
               router.addRoutes(accessRoutes) // 动态添加可访问路由表
               if (accessRoutes.length) { // 默认返回第一个
+                // next({
+                //   name: accessRoutes[0].children[0].name,
+                //   query: to.query,
+                //   replace: true
+                // })
                 next({
-                  name: accessRoutes[0].children[0].name,
-                  query: to.query,
+                  ...to,
                   replace: true
                 })
               } else {

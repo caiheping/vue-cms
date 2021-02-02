@@ -26,21 +26,21 @@
 </template>
 
 <script>
-  import errGif from '@/static/images/401.gif'
+import errGif from '@/static/images/401.gif'
 
-  export default {
-    name: 'Page401',
-    data () {
-      return {
-        errGif: errGif + '?' + +new Date()
-      }
-    },
-    methods: {
-      back () {
-        this.$router.go(-1)
-      }
+export default {
+  name: 'Page401',
+  data () {
+    return {
+      errGif: errGif + '?' + +new Date()
+    }
+  },
+  methods: {
+    back () {
+      this.$router.go(-1)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>

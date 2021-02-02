@@ -6,6 +6,7 @@ const permission = {
   state: {
     routes: [],
     menus: [],
+    menuLists: [],
     addRoutes: [],
     allRouterNames: []
   },
@@ -13,6 +14,9 @@ const permission = {
     SET_ROUTES: (state, routes) => {
       state.addRoutes = routes
       state.routes = constantRoutes.concat(routes)
+    },
+    SET_MENULISTS: (state, menus) => {
+      state.menuLists = menus
     },
     SET_MENUS: (state, menus) => {
       state.menus = menus
@@ -31,6 +35,7 @@ const permission = {
           const accessedMenus = filterAsyncRouter(res.data.rows).menus
           accessedRoutes.push({ path: '*', redirect: '/404', hidden: true })
           commit('SET_ROUTES', accessedRoutes)
+          commit('SET_MENULISTS', res.data.rows)
           commit('SET_MENUS', accessedMenus)
           // commit('SET_ROUTER_NAME', setRouterNames(this.state.permission.routes))
           resolve(accessedRoutes)

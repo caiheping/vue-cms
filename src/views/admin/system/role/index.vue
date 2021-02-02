@@ -82,6 +82,7 @@
           />
         </template>
       </el-table-column>
+      <el-table-column label="创建人" align="center" prop="createdBy"></el-table-column>
       <el-table-column label="创建时间" align="center" prop="createdAt" :formatter="dateFormatter"></el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -288,9 +289,13 @@ export default {
     },
     /** 查询菜单树结构 */
     getMenuTreeselect () {
-      getMenu().then(res => {
-        this.menuOptions = this.handleTree(res.data.rows, 'id', 'parentId').tree
-      })
+      if (this.$store.state.user.userInfo.user.id === 1) {
+        getMenu().then(res => {
+          this.menuOptions = this.handleTree(res.data.rows, 'id', 'parentId').tree
+        })
+      } else {
+        this.menuOptions = this.handleTree(this.$store.state.permission.menuLists, 'id', 'parentId').tree
+      }
     },
     // 所有菜单节点数据
     getMenuAllCheckedKeys () {

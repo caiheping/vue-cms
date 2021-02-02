@@ -110,7 +110,7 @@
           <el-table-column label="状态" align="center">
             <template slot-scope="scope">
               <el-switch
-                :disabled="scope.row.id === 1 || checkStatus('system:user:showStatus')"
+                :disabled="scope.row.id === $store.state.user.userInfo.user.id || checkStatus('system:user:showStatus')"
                 v-model="scope.row.status"
                 active-value="1"
                 inactive-value="0"
@@ -135,7 +135,7 @@
               >修改</el-button>
               <el-button
                 class="delete"
-                v-if="scope.row.id !== 1"
+                v-if="scope.row.id !== $store.state.user.userInfo.user.id"
                 size="mini"
                 type="text"
                 icon="el-icon-delete"
@@ -147,7 +147,7 @@
                 type="text"
                 icon="el-icon-key"
                 @click="handleResetPwd(scope.row)"
-                v-has-permi="['system:user:updatePwd']"
+                v-has-permi="['system:user:resetPwd']"
               >重置密码</el-button>
             </template>
           </el-table-column>
