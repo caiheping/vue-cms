@@ -10,7 +10,7 @@
       <el-input v-model="user.confirmPassword" placeholder="请确认密码" type="password" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" size="mini" @click="submit">保存</el-button>
+      <el-button type="primary" size="mini" @click="submit" v-has-permi="['system:user:resetPwd']">保存</el-button>
       <el-button type="danger" size="mini" @click="close">关闭</el-button>
     </el-form-item>
   </el-form>
