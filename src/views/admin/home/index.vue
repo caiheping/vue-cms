@@ -1,6 +1,6 @@
 <template>
   <div class="app-container home">
-    <a class="toBlog" :href="`${origin}/web/index.html#/front/technique/${id}/all`" target="_blank">我的博客</a>
+    <a class="toBlog" :href="`${origin}/index.html#/front/technique/${id}/all`" target="_blank">我的博客</a>
   </div>
 </template>
 

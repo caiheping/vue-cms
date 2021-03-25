@@ -136,6 +136,7 @@ export default {
     display: flex;
     align-items: center;
     height: 100%;
+    overflow: hidden;
     background-size: cover;
     box-sizing: border-box;
     justify-content: flex-end;
