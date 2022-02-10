@@ -65,13 +65,13 @@ cms-api 为前后端分离的博客管理系统。
 
 **首页**
 
-![home](README.assets/home-1615197511886.png)
+![home](http://cdn.caihp.top/egg-cms/other/home.png)
 
 
 
 **博客管理 > 文章列表**
 
-![article-list](README.assets/article-list-1615197511885.png)
+![article-list](http://cdn.caihp.top/egg-cms/other/article-list.png)
 
 **博客管理 > 文章类型**
 
@@ -81,7 +81,7 @@ cms-api 为前后端分离的博客管理系统。
 
 **博客管理 > 友情链接**
 
-![friendly-link](README.assets/friendly-link-1615197511893.png)
+![friendly-link](http://cdn.caihp.top/egg-cms/other/friendly-link.png)
 
 
 
