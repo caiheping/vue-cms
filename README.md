@@ -26,9 +26,9 @@ cms-api 为前后端分离的博客管理系统。
 >
 > git clone https://gitee.com/caiheping/vue-cms.git
 >
-> npm install
->
 > cd ./vue-cms
+>
+> npm install
 >
 > npm run serve
 

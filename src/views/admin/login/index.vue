@@ -1,10 +1,24 @@
 <template>
   <div class="login">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+    >
       <h3 class="title">登录</h3>
       <el-form-item prop="userName">
-        <el-input v-model="loginForm.userName" type="text" auto-complete="off" placeholder="账号">
-          <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon" />
+        <el-input
+          v-model="loginForm.userName"
+          type="text"
+          auto-complete="off"
+          placeholder="账号"
+        >
+          <svg-icon
+            slot="prefix"
+            icon-class="user"
+            class="el-input__icon input-icon"
+          />
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
@@ -15,7 +29,11 @@
           placeholder="密码"
           @keyup.enter.native="handleLogin"
         >
-          <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon" />
+          <svg-icon
+            slot="prefix"
+            icon-class="password"
+            class="el-input__icon input-icon"
+          />
         </el-input>
       </el-form-item>
       <el-form-item prop="captcha">
@@ -26,11 +44,17 @@
           style="width: 63%"
           @keyup.enter.native="handleLogin"
         >
-          <svg-icon slot="prefix" icon-class="validCode" class="el-input__icon input-icon" />
+          <svg-icon
+            slot="prefix"
+            icon-class="validCode"
+            class="el-input__icon input-icon"
+          />
         </el-input>
         <div class="login-captcha" v-html="codeHtml" @click="getCode"></div>
       </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0 0 25px 0;">记住密码</el-checkbox>
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0 0 25px 0;"
+        >记住密码</el-checkbox
+      >
       <el-form-item style="width:100%;">
         <el-button
           :loading="loading"
@@ -44,6 +68,16 @@
         </el-button>
       </el-form-item>
     </el-form>
+    <div class="footer">
+      <span>本网站由</span>
+      <a
+        class="upyun"
+        href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"
+      >
+        <img src="./又拍云_logo6.png" />
+      </a>
+      <span>提供CDN加速/云存储服务</span>
+    </div>
   </div>
 </template>
 
@@ -72,7 +106,9 @@ export default {
         password: [
           { required: true, trigger: 'blur', message: '密码不能为空' }
         ],
-        captcha: [{ required: true, trigger: 'change', message: '验证码不能为空' }]
+        captcha: [
+          { required: true, trigger: 'change', message: '验证码不能为空' }
+        ]
       },
       loading: false,
       redirect: undefined
@@ -94,7 +130,8 @@ export default {
       const rememberMe = Cookies.get('rememberMe')
       this.loginForm = {
         userName: userName === undefined ? this.loginForm.userName : userName,
-        password: password === undefined ? this.loginForm.password : decrypt(password),
+        password:
+          password === undefined ? this.loginForm.password : decrypt(password),
         rememberMe: rememberMe === undefined ? false : Boolean(rememberMe)
       }
     },
@@ -104,8 +141,12 @@ export default {
           this.loading = true
           if (this.loginForm.rememberMe) {
             Cookies.set('userName', this.loginForm.userName, { expires: 30 })
-            Cookies.set('password', encrypt(this.loginForm.password), { expires: 30 })
-            Cookies.set('rememberMe', this.loginForm.rememberMe, { expires: 30 })
+            Cookies.set('password', encrypt(this.loginForm.password), {
+              expires: 30
+            })
+            Cookies.set('rememberMe', this.loginForm.rememberMe, {
+              expires: 30
+            })
           } else {
             Cookies.remove('userName')
             Cookies.remove('password')
@@ -132,66 +173,89 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-  .login {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    background-size: cover;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    background-image: url("../../../static/images/login-bg.jpg");
-  }
-  .title {
-    margin: 0px auto 30px auto;
-    text-align: center;
-    color: #707070;
-  }
+.login {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-size: cover;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  background-image: url("../../../static/images/login-bg.jpg");
+}
+.title {
+  margin: 0px auto 30px auto;
+  text-align: center;
+  color: #707070;
+}
 
-  .login-form {
-    border-radius: 6px;
-    background: #ffffff;
-    width: 400px;
-    padding: 25px 25px 5px 25px;
-    margin-right: 150px;
-    .el-input {
-      height: 38px;
-      input {
-        height: 38px;
-      }
-    }
-    .input-icon {
-      height: 39px;
-      width: 14px;
-      margin-left: 2px;
-    }
-  }
-  .login-tip {
-    font-size: 13px;
-    text-align: center;
-    color: #bfbfbf;
-  }
-  .login-captcha {
-    width: 33%;
+.login-form {
+  border-radius: 6px;
+  background: #ffffff;
+  width: 400px;
+  padding: 25px 25px 5px 25px;
+  margin-right: 150px;
+  .el-input {
     height: 38px;
-    float: right;
-    box-sizing: border-box;
-    border: 1px solid #bebebe;
-    svg {
-      cursor: pointer;
-      vertical-align: middle;
-      height: 100%;
-      width: 100%;
+    input {
+      height: 38px;
     }
   }
-  .el-login-footer {
-    height: 40px;
-    line-height: 40px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-    letter-spacing: 1px;
+  .input-icon {
+    height: 39px;
+    width: 14px;
+    margin-left: 2px;
   }
+}
+.login-tip {
+  font-size: 13px;
+  text-align: center;
+  color: #bfbfbf;
+}
+.login-captcha {
+  width: 33%;
+  height: 38px;
+  float: right;
+  box-sizing: border-box;
+  border: 1px solid #bebebe;
+  svg {
+    cursor: pointer;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+  }
+}
+.el-login-footer {
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    height: 30px;
+    img {
+      height: 30px;
+    }
+  }
+  span {
+    font-size: 16px;
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+  }
+}
 </style>
